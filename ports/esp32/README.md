@@ -238,4 +238,3 @@ Troubleshooting
 * Continuous reboots after programming: Ensure `CONFIG_ESPTOOLPY_FLASHMODE` is
   correct for your board (e.g. ESP-WROOM-32 should be DIO). Then perform a
   `make clean`, rebuild, redeploy.
-
