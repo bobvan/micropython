@@ -21,6 +21,7 @@
         "SPIRAM": "Support for SPIRAM / WROVER",
         "UNICORE": "ESP32 Unicore",
         "OTA": "Support for OTA"
+        "OTA_SPIRAM": "Support for OTA and SPIRAM"
     },
     "vendor": "Espressif"
 }
