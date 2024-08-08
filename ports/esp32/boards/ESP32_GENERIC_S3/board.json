@@ -19,6 +19,8 @@
     "vendor": "Espressif",
     "variants": {
         "SPIRAM_OCT": "Support for Octal-SPIRAM",
-        "FLASH_4M": "4MiB flash"
+        "FLASH_4M": "4MiB flash",
+        "FLASH_4M_OTA": "4MiB flash for OTAOS",
+        "OTA": "Support for OTA"
     }
 }

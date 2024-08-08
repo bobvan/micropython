@@ -1,4 +1,4 @@
-name: esp32 port for OTA
+name: build esp32 port for OTAOS
 
 on:
   push:
@@ -23,7 +23,9 @@ jobs:
       fail-fast: false
       matrix:
         ci_func:  # names are functions in ci.sh
-          - esp32_build_ota
+          - esp32_build_otaos
+          - esp32s2_build_otaos
+          - esp32c3_build_otaos
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v4

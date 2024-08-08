@@ -156,12 +156,46 @@ function ci_esp32_build_s3_c3 {
     make ${MAKEOPTS} -C ports/esp32 BOARD=ESP32_GENERIC_C3
 }
 
-function ci_esp32_build_ota {
+function ci_build_and_rename() {
+    board=$1
+    variant=$2
+    outputName=$3
+    make ${MAKEOPTS} -C ports/esp32 BOARD=$board BOARD_VARIANT=$variant
+    if [ -z $variant ]; then
+	    buildDir=ports/esp32/build-$board
+    else
+	    buildDir=ports/esp32/build-$board-$variant
+    fi
+    echo buildDir $buildDir
+    echo FirstMove: mv $buildDir/firmware.bin    $buildDir/$outputName.bin
+    mv $buildDir/firmware.bin    $buildDir/$outputName.bin
+    mv $buildDir/micropython.bin $buildDir/$outputName.app-bin
+}
+
+function ci_esp32_build_otaos {
     ci_esp32_build_common
 
-    make ${MAKEOPTS} -C ports/esp32 BOARD=SIL_WESP32
-    make ${MAKEOPTS} -C ports/esp32 BOARD=ESP32_GENERIC BOARD_VARIANT=OTA
-    make ${MAKEOPTS} -C ports/esp32 BOARD=ESP32_GENERIC BOARD_VARIANT=OTA_SPIRAM
+    ci_build_and_rename SIL_WESP32    ''         SIL_WESP32_2MP
+    ci_build_and_rename ESP32_GENERIC OTA        ESP32_GENERIC_2MP
+    ci_build_and_rename ESP32_GENERIC OTA_SPIRAM ESP32_GENERIC_SPIRAM_2MP
+}
+
+function ci_esp32c3_build_otaos {
+    ci_esp32_build_common
+
+    ci_build_and_rename ESP32_GENERIC_C3 OTA     ESP32C3_GENERIC_2MP
+}
+
+function ci_esp32s2_build_otaos {
+    ci_esp32_build_common
+
+    ci_build_and_rename ESP32_GENERIC_S2 OTA     ESP32S2_GENERIC_2MP
+}
+
+function ci_esp32s3_build_otaos {
+    ci_esp32_build_common
+
+    ci_build_and_rename ESP32_GENERIC_S3 FLASH_4M_OTA ESP32S3_GENERIC_FLASH_4M_2MP
 }
 
 ########################################################################################
