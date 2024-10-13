@@ -87,6 +87,7 @@ PY_CORE_O_BASENAME = $(addprefix py/,\
 	nlrpowerpc.o \
 	nlrxtensa.o \
 	nlrrv32.o \
+	nlrrv64.o \
 	nlrsetjmp.o \
 	malloc.o \
 	gc.o \
@@ -131,6 +132,7 @@ PY_CORE_O_BASENAME = $(addprefix py/,\
 	nativeglue.o \
 	pairheap.o \
 	ringbuf.o \
+	cstack.o \
 	stackctrl.o \
 	argcheck.o \
 	warning.o \
@@ -166,6 +168,7 @@ PY_CORE_O_BASENAME = $(addprefix py/,\
 	objnamedtuple.o \
 	objrange.o \
 	objreversed.o \
+	objringio.o \
 	objset.o \
 	objsingleton.o \
 	objslice.o \
